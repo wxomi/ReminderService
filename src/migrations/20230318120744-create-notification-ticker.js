@@ -2,7 +2,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("NotificationTickers", {
+    await queryInterface.createTable("NotificationTickets", {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -24,6 +24,7 @@ module.exports = {
       status: {
         type: Sequelize.ENUM,
         allowNull: false,
+        defaultValue: "PENDING",
         values: ["PENDING", "SUCCESS", "FAILED"],
       },
       notificationTime: {
@@ -41,6 +42,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("NotificationTickers");
+    await queryInterface.dropTable("NotificationTickets");
   },
 };

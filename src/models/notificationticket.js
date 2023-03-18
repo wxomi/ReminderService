@@ -1,7 +1,7 @@
 "use strict";
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
-  class NotificationTicker extends Model {
+  class NotificationTicket extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  NotificationTicker.init(
+  NotificationTicket.init(
     {
       subject: {
         type: DataTypes.STRING,
@@ -28,6 +28,7 @@ module.exports = (sequelize, DataTypes) => {
       status: {
         type: DataTypes.ENUM,
         values: ["PENDING", "SUCCESS", "FAILED"],
+        defaultValue: "PENDING",
         allowNull: false,
       },
       notificationTime: {
@@ -37,8 +38,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: "NotificationTicker",
+      modelName: "NotificationTicket",
     }
   );
-  return NotificationTicker;
+  return NotificationTicket;
 };
