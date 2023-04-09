@@ -16,10 +16,9 @@ const setupJobs = () => {
           if (err) {
             console.log(err);
           } else {
-            const response = await emailService.updateTicket(email.id, {
+            await emailService.updateTicket(email.id, {
               status: "SUCCESS",
             });
-            console.log(response);
           }
         }
       );
